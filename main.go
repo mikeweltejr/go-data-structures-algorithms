@@ -5,19 +5,25 @@ import "fmt"
 func main() {
 	l := LinkedList{}
 
-	l.addLast(1)
-	l.addLast(2)
-	l.addLast(3)
-	l.addLast(4)
-	l.addLast(5)
-	l.addFirst(10)
-	l.addAny(12, 4)
-
-	l.removeFirst()
-	l.removeLast()
-	l.removeAny(0)
-
+	l.insertSorted(12)
+	l.insertSorted(1)
+	l.insertSorted(3)
+	l.insertSorted(5)
+	l.insertSorted(12)
+	l.insertSorted(11)
+	l.insertSorted(20)
+	l.insertSorted(3)
+	l.insertSorted(15)
 	l.display()
 
+	l.reverseList()
+	l.display()
+	//l.move(1)
+
+	// l.removeFirst()
+	// l.removeLast()
+	// l.removeAny(0)
+
 	fmt.Printf("Element found at position: %d\n", l.search(4))
+	fmt.Printf("Has Cycle? %t\n", l.hasCycle())
 }

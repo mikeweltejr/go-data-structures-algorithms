@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Node struct {
 	Element int
@@ -156,10 +158,122 @@ func (l *LinkedList) display() {
 	p := l.Head
 
 	for p != nil {
-		fmt.Printf("%d,", p.Element)
+		fmt.Printf("%d ------>", p.Element)
 
 		p = p.Next
 	}
 
 	fmt.Println()
+}
+
+func (l *LinkedList) insertSorted(e int) {
+	newNode := Node{
+		Element: e,
+		Next:    nil,
+	}
+
+	if l.isEmpty() {
+		l.Head = &newNode
+		l.Tail = &newNode
+	} else {
+		p := l.Head
+		q := l.Head
+
+		for p != nil && p.Element < e {
+			q = p
+			p = p.Next
+		}
+
+		if p == l.Head {
+			newNode.Next = l.Head
+			l.Head = &newNode
+		} else {
+			newNode.Next = q.Next
+			q.Next = &newNode
+		}
+	}
+
+	temp := l.Head
+
+	for temp.Next != nil {
+		temp = temp.Next
+	}
+
+	l.Tail = temp
+
+	l.Size = l.getSize() + 1
+}
+
+// TODO: fix this method
+func (l *LinkedList) move(k int) {
+
+	// If empty or k is 0 nothing to move so return
+	if l.isEmpty() || k == 0 {
+		return
+	}
+
+	temp := l.Tail
+
+	// Set k to be something that can be properly moved given the size of the list (e.g. 6%5=1)
+	if k > l.getSize() {
+		k = k % l.getSize()
+	}
+
+	current := l.Head
+	count := 1
+
+	for count < k && current != nil {
+		current = current.Next
+		count++
+	}
+
+	if current == nil {
+		return
+	}
+
+	fmt.Println(current.Element)
+
+	kthNode := current
+	temp.Next = l.Head
+	l.Head = kthNode.Next
+	kthNode.Next = nil
+}
+
+func (l *LinkedList) reverseList() {
+	if l.isEmpty() {
+		return
+	}
+
+	var prev *Node
+	current := l.Head
+
+	for current != nil {
+		temp := current.Next
+		// Takes each node and sets it's Next to the previous Node
+		current.Next = prev
+		prev = current
+		current = temp
+	}
+
+	l.Head = prev
+}
+
+func (l *LinkedList) hasCycle() bool {
+	if l.isEmpty() {
+		return false
+	}
+
+	slow := l.Head
+	fast := l.Head
+
+	for slow != nil && fast != nil && fast.Next != nil {
+		slow = slow.Next
+		fast = fast.Next.Next
+
+		if slow == fast {
+			return true
+		}
+	}
+
+	return false
 }
