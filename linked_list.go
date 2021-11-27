@@ -166,6 +166,14 @@ func (l *LinkedList) display() {
 	fmt.Println()
 }
 
+func (l *LinkedList) addOddEven(e int) {
+	if e%2 == 0 {
+		l.addLast(e)
+	} else {
+		l.addFirst(e)
+	}
+}
+
 func (l *LinkedList) insertSorted(e int) {
 	newNode := Node{
 		Element: e,
@@ -276,4 +284,75 @@ func (l *LinkedList) hasCycle() bool {
 	}
 
 	return false
+}
+
+func (l *LinkedList) isPalindrome() bool {
+	p := l.Head
+	intArr := []int{}
+
+	for p != nil {
+		intArr = append(intArr, p.Element)
+		p = p.Next
+	}
+
+	if len(intArr) == 1 {
+		return true
+	}
+
+	for i, j := 0, len(intArr)-1; i < len(intArr); i, j = i+1, j-1 {
+		if intArr[i] != intArr[j] {
+			return false
+		}
+	}
+
+	return true
+}
+
+func (l *LinkedList) removeElements(val int) {
+	if l.isEmpty() {
+		return
+	}
+
+	p := l.Head
+	var prev *Node
+
+	for p != nil {
+		if p.Element == val {
+			if prev != nil {
+				prev.Next = p.Next
+				p = prev
+			}
+		}
+
+		prev = p
+		p = p.Next
+	}
+
+	if l.Head.Element == val {
+		l.Head = l.Head.Next
+	}
+}
+
+func (l *LinkedList) oddEventList() {
+	if l.Head == nil {
+		return
+	}
+
+	odd := l.Head
+	even := l.Head.Next
+	evenHead := even
+
+	// 7 --> 1 --> 3 --> 2 --> 4 --> 6
+	for even != nil && even.Next != nil {
+		// 3, 4
+		odd.Next = even.Next
+		// 3, 4
+		odd = odd.Next
+		// 2, 6
+		even.Next = odd.Next
+		// 2, 6
+		even = even.Next
+	}
+
+	odd.Next = evenHead
 }
