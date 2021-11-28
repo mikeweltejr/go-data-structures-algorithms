@@ -356,3 +356,21 @@ func (l *LinkedList) oddEventList() {
 
 	odd.Next = evenHead
 }
+
+func (l *LinkedList) findMiddleNode() *Node {
+	if l.isEmpty() {
+		return nil
+	}
+	nodeArr := []*Node{}
+
+	p := l.Head
+
+	for p != nil {
+		nodeArr = append(nodeArr, p)
+		p = p.Next
+	}
+
+	mid := len(nodeArr) / 2
+
+	return nodeArr[mid]
+}
