@@ -16,9 +16,15 @@ func arrayExamples() {
 	// display(nums)
 
 	// Search Rotated Array
-	nums := []int{3, 5, 1}
-	i := searchRotatedSorted(nums, 3)
-	fmt.Printf("Index: %d\n", i)
+	// nums := []int{3, 5, 1}
+	// i := searchRotatedSorted(nums, 3)
+	// fmt.Printf("Index: %d\n", i)
+
+	// Search Rotated Array Two (non-distinct values)
+	nums := []int{1, 3}
+	ret := searchRotatedSortedTwo(nums, 3)
+	fmt.Printf("Found: %t\n", ret)
+
 }
 
 func linkedListExamples() {

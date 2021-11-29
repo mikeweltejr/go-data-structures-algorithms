@@ -168,3 +168,105 @@ func searchRotatedSorted(nums []int, target int) int {
 
 	return -1
 }
+
+/*
+There is an integer array nums sorted in non-decreasing order (not necessarily with distinct values).
+
+Before being passed to your function, nums is rotated at an unknown pivot index k (0 <= k < nums.length)
+such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed).
+For example, [0,1,2,4,4,4,5,6,6,7] might be rotated at pivot index 5 and become [4,5,6,6,7,0,1,2,4,4].
+
+Given the array nums after the rotation and an integer target, return true if target is in nums, or false if it is not in nums.
+
+You must decrease the overall operation steps as much as possible.
+*/
+
+/*
+
+Solution:
+	* Find start and end (this is more complicated as duplicates can exist)
+	* To find the start we should keep going until nums[start] != nums[start-1]
+	* If we can find the first occurrence of start we can get end very easily
+	* Once we get these everything else should be just as the method above
+
+*/
+func searchRotatedSortedTwo(nums []int, target int) bool {
+	if len(nums) == 0 {
+		return false
+	}
+
+	if len(nums) == 1 {
+		return target == nums[0]
+	}
+
+	start := 0
+
+	for i, j := 0, len(nums)-1; i < len(nums); i, j = i+1, j-1 {
+		if j > 0 && nums[j] < nums[j-1] {
+			start = j
+			break
+		} else if !(i+1 >= len(nums)) && nums[i] > nums[i+1] {
+			start = i + 1
+			break
+		}
+	}
+
+	minVal := nums[start]
+
+	end := 0
+
+	if start != 0 {
+		end = start - 1
+	} else {
+		end = len(nums) - 1
+	}
+	// find the maxVal which will be the end of the sorted array
+	for nums[end] == minVal && end != start {
+		end--
+	}
+
+	fmt.Printf("Start: %d\n", start)
+	fmt.Printf("End: %d\n", end)
+
+	// if the target is less than the value of start or greater than value at end return false
+	if target < nums[start] || target > nums[end] {
+		return false
+	}
+
+	// if start and end are equal just return if the start is equal to target since the array is all the same
+	if nums[start] == nums[end] {
+		return nums[start] == target
+	}
+
+	if target-nums[start] <= nums[end]-target {
+		for i := start; i < len(nums); i++ {
+			fmt.Println(i)
+			if i == end {
+				break
+			}
+
+			if nums[i] == target {
+				return true
+			}
+			if i == len(nums)-1 {
+				i = -1
+			}
+		}
+	} else {
+		for j := end; j >= 0; j-- {
+			if j == start {
+				break
+			}
+
+			if nums[j] == target {
+				return true
+			}
+
+			if j == 0 {
+				j = len(nums)
+			}
+		}
+	}
+
+	return false
+}
