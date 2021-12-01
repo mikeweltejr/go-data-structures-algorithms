@@ -374,3 +374,25 @@ func (l *LinkedList) findMiddleNode() *Node {
 
 	return nodeArr[mid]
 }
+
+func (l *LinkedList) findIntersection(l2 *LinkedList) *Node {
+	nodeMap := make(map[*Node]*Node)
+
+	p := l.Head
+
+	for p != nil {
+		nodeMap[p] = p
+		p = p.Next
+	}
+
+	p2 := l2.Head
+
+	for p2 != nil {
+		if nodeMap[p2] == p2 {
+			return p2
+		}
+		p2 = p2.Next
+	}
+
+	return nil
+}
