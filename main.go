@@ -1,9 +1,7 @@
 package main
 
-import "fmt"
-
 func main() {
-	arrayExamples()
+	linkedListExamples()
 }
 
 func arrayExamples() {
@@ -20,11 +18,21 @@ func arrayExamples() {
 	// i := searchRotatedSorted(nums, 3)
 	// fmt.Printf("Index: %d\n", i)
 
-	// Search Rotated Array Two (non-distinct values)
-	nums := []int{1, 3}
-	ret := searchRotatedSortedTwo(nums, 3)
-	fmt.Printf("Found: %t\n", ret)
+	// // Search Rotated Array Two (non-distinct values)
+	// nums := []int{1, 3}
+	// ret := searchRotatedSortedTwo(nums, 3)
+	// fmt.Printf("Found: %t\n", ret)
 
+	// // Binary Search
+	// nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+	// ret := binarySearch(nums, 3)
+	// fmt.Printf("Found: %t\n", ret)
+}
+
+func numbersExample() {
+	// num := 31
+	// ret := isPrime(num)
+	// fmt.Printf("Is %d Prime? %t\n", num, ret)
 }
 
 func linkedListExamples() {
@@ -45,7 +53,11 @@ func linkedListExamples() {
 	l.addLast(5)
 	l.addLast(6)
 	l.display()
-	fmt.Printf("Middle Node: %d\n", l.findMiddleNode().Element)
+
+	n := swapPairs(l.Head)
+	n.display()
+
+	// fmt.Printf("Middle Node: %d\n", l.findMiddleNode().Element)
 	//l.reverseList()
 	//l.display()
 	//l.move(1)

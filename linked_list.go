@@ -166,6 +166,15 @@ func (l *LinkedList) display() {
 	fmt.Println()
 }
 
+func (n *Node) display() {
+	for n != nil {
+		fmt.Printf("%d-->", n.Element)
+		n = n.Next
+	}
+
+	fmt.Println()
+}
+
 func (l *LinkedList) addOddEven(e int) {
 	if e%2 == 0 {
 		l.addLast(e)
@@ -395,4 +404,18 @@ func (l *LinkedList) findIntersection(l2 *LinkedList) *Node {
 	}
 
 	return nil
+}
+
+func swapPairs(head *Node) *Node {
+	if head == nil || head.Next == nil {
+		return head
+	}
+
+	firstNode := head
+	secondNode := head.Next
+
+	firstNode.Next = swapPairs(secondNode.Next)
+	secondNode.Next = firstNode
+
+	return secondNode
 }

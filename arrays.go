@@ -270,3 +270,21 @@ func searchRotatedSortedTwo(nums []int, target int) bool {
 
 	return false
 }
+
+func binarySearch(nums []int, target int) bool {
+	mid := len(nums) / 2
+
+	if mid == 0 {
+		return nums[0] == target
+	}
+
+	if nums[mid] == target {
+		return true
+	}
+
+	if target > nums[mid] {
+		return binarySearch(nums[mid:], target)
+	} else {
+		return binarySearch(nums[:mid], target)
+	}
+}
