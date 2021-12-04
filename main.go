@@ -1,7 +1,9 @@
 package main
 
+import "fmt"
+
 func main() {
-	linkedListExamples()
+	arrayExamples()
 }
 
 func arrayExamples() {
@@ -27,6 +29,11 @@ func arrayExamples() {
 	// nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
 	// ret := binarySearch(nums, 3)
 	// fmt.Printf("Found: %t\n", ret)
+
+	// Search Insert
+	nums := []int{1, 3, 5, 6}
+	ret := searchInsert(nums, 6)
+	fmt.Printf("Index: %d\n", ret)
 }
 
 func numbersExample() {

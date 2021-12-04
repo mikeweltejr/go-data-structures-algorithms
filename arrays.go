@@ -288,3 +288,71 @@ func binarySearch(nums []int, target int) bool {
 		return binarySearch(nums[:mid], target)
 	}
 }
+
+/*
+	Given a sorted array of distinct integers and a target value,
+	return the index if the target is found. If not,
+	return the index where it would be if it were inserted in order.
+
+	You must write an algorithm with O(log n) runtime complexity.
+
+	This is binary search but with returning the index
+*/
+func searchInsert(nums []int, target int) int {
+	pivot, left := 0, 0
+	right := len(nums) - 1
+
+	for left <= right {
+		pivot = left + (right-left)/2
+		if nums[pivot] == target {
+			return pivot
+		}
+
+		if target < nums[pivot] {
+			right = pivot - 1
+		} else {
+			left = pivot + 1
+		}
+	}
+
+	return left
+}
+
+/*
+	Given an array of integers nums sorted in non-decreasing order,
+	find the starting and ending position of a given target value.
+
+	If target is not found in the array, return [-1, -1].
+
+	You must write an algorithm with O(log n) runtime complexity.
+*/
+func searchRange(nums []int, target int) []int {
+	pivot, left, right := 0, 0, len(nums)-1
+	start, end := 0, 0
+
+	for left <= right {
+		pivot = left + (right-left)/2
+
+		if nums[pivot] == target {
+			start = pivot - 1
+			end = pivot + 1
+
+			for start >= 0 && nums[start] == target {
+				start--
+			}
+			for end < len(nums) && nums[end] == target {
+				end++
+			}
+			ret := []int{start + 1, end - 1}
+			return ret
+		}
+		if target < nums[pivot] {
+			right = pivot - 1
+		} else {
+			left = pivot + 1
+		}
+	}
+
+	emptyRet := []int{-1, -1}
+	return emptyRet
+}
