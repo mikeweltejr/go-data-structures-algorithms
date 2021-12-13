@@ -1,9 +1,7 @@
 package main
 
-import "fmt"
-
 func main() {
-	arrayExamples()
+	graphExamples()
 }
 
 func arrayExamples() {
@@ -31,9 +29,9 @@ func arrayExamples() {
 	// fmt.Printf("Found: %t\n", ret)
 
 	// Search Insert
-	nums := []int{1, 3, 5, 6}
-	ret := searchInsert(nums, 6)
-	fmt.Printf("Index: %d\n", ret)
+	// nums := []int{1, 3, 5, 6}
+	// ret := searchInsert(nums, 6)
+	// fmt.Printf("Index: %d\n", ret)
 }
 
 func numbersExample() {
@@ -43,7 +41,7 @@ func numbersExample() {
 }
 
 func linkedListExamples() {
-	l := LinkedList{}
+	//l := LinkedList{}
 
 	// l.addOddEven(2)
 	// l.addOddEven(4)
@@ -53,16 +51,16 @@ func linkedListExamples() {
 	// l.addOddEven(6)
 	//l.oddEventList()
 
-	l.addLast(1)
-	l.addLast(2)
-	l.addLast(3)
-	l.addLast(4)
-	l.addLast(5)
-	l.addLast(6)
-	l.display()
+	// l.addLast(1)
+	// l.addLast(2)
+	// l.addLast(3)
+	// l.addLast(4)
+	// l.addLast(5)
+	// l.addLast(6)
+	// l.display()
 
-	n := swapPairs(l.Head)
-	n.display()
+	// n := swapPairs(l.Head)
+	// n.display()
 
 	// fmt.Printf("Middle Node: %d\n", l.findMiddleNode().Element)
 	//l.reverseList()
@@ -79,4 +77,20 @@ func linkedListExamples() {
 	// fmt.Printf("Element found at position: %d\n", l.search(4))
 	// fmt.Printf("Has Cycle? %t\n", l.hasCycle())
 	// fmt.Printf("Is Palindrome? %t\n", l.isPalindrome())
+}
+
+func graphExamples() {
+	g := new(Graph)
+	g.initialize()
+
+	g.addEdge(1, 2)
+	g.addEdge(1, 3)
+	g.addEdge(1, 4)
+	g.addEdge(2, 4)
+	g.addEdge(3, 4)
+	g.addEdge(4, 5)
+	g.addEdge(0, 4)
+	g.addEdge(6, 7)
+
+	g.dfs(7)
 }
