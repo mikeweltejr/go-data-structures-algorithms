@@ -13,3 +13,17 @@ func isPrime(n int) bool {
 
 	return true
 }
+
+func getUniformIntegerCountInInterval(a int, b int) int {
+	count := 0
+
+	if a == b {
+		return 1
+	}
+
+	if a < 10 {
+		count = 10 - a
+	}
+
+	return count
+}

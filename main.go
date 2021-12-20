@@ -1,8 +1,56 @@
 package main
 
 func main() {
-	graphExamples()
+	linkedListExamples()
 }
+
+func stringExamples() {
+	// rotationalCipher("Zebra-493", 3)
+}
+
+// func LRUCacheExamples() {
+// 	cache := newLRUCache(7)
+// 	cache.Put(1)
+// 	cache.Put(2)
+// 	cache.Put(3)
+// 	cache.Put(4)
+// 	cache.Put(5)
+// 	cache.Put(6)
+// 	cache.PrintCache()
+
+// 	cache.Get(4)
+// 	cache.PrintCache()
+
+// 	cache.Get(3)
+// 	cache.PrintCache()
+
+// 	cache.Put(7)
+// 	cache.PrintCache()
+
+// 	cache.Put(8)
+// 	cache.PrintCache()
+
+// 	cache.Get(9)
+// 	cache.PrintCache()
+
+// 	cache.Get(7)
+// 	cache.PrintCache()
+// }
+
+// func queueExamples() {
+// 	var q Queue
+// 	q.Enqueue(1)
+// 	q.Enqueue(2)
+// 	q.Enqueue(3)
+// 	q.Enqueue(4)
+// 	q.Enqueue(5)
+
+// 	fmt.Println(q.Dequeue())
+// 	fmt.Println(q.Dequeue())
+// 	fmt.Println(q.Dequeue())
+// 	fmt.Println(q.Dequeue())
+// 	fmt.Println(q.Dequeue())
+// }
 
 func arrayExamples() {
 	// nums := []int{9, 72, 34, 29, -49, -22, -77, -17, -66, -75, -44, -30, -24}
@@ -32,6 +80,16 @@ func arrayExamples() {
 	// nums := []int{1, 3, 5, 6}
 	// ret := searchInsert(nums, 6)
 	// fmt.Printf("Index: %d\n", ret)
+
+	// Number of Ways
+	// nums := []int{1, 5, 3, 3, 3}
+	// ret := numberOfWays(nums, 6)
+	// fmt.Println(ret)
+
+	// Are They Equal
+	// a := []int{1, 2, 3, 4}
+	// b := []int{1, 4, 1, 1}
+	// fmt.Println(areTheyEqual(a, b))
 }
 
 func numbersExample() {
@@ -77,20 +135,44 @@ func linkedListExamples() {
 	// fmt.Printf("Element found at position: %d\n", l.search(4))
 	// fmt.Printf("Has Cycle? %t\n", l.hasCycle())
 	// fmt.Printf("Is Palindrome? %t\n", l.isPalindrome())
+
+	// l := LinkedList{}
+	// l.addLast(1)
+	// l.addLast(2)
+	// l.addLast(4)
+	// l.addLast(6)
+	// l.addLast(9)
+	// l.addLast(8)
+	// l.addLast(12)
+	// l.reverseEvens()
+
+	l := LinkedList{}
+	l.addFirst(5)
+	l.addFirst(5)
+	l.addFirst(4)
+	l.addFirst(3)
+	l.addFirst(3)
+	l.addFirst(3)
+	l.addFirst(2)
+	l.addFirst(1)
+	l.addFirst(1)
+	l.display()
+	n := l.Head.removeDuplicatesDistinct()
+	n.display()
 }
 
-func graphExamples() {
-	g := new(Graph)
-	g.initialize()
+// func graphExamples() {
+// 	g := new(Graph)
+// 	g.initialize()
 
-	g.addEdge(1, 2)
-	g.addEdge(1, 3)
-	g.addEdge(1, 4)
-	g.addEdge(2, 4)
-	g.addEdge(3, 4)
-	g.addEdge(4, 5)
-	g.addEdge(0, 4)
-	g.addEdge(6, 7)
+// 	g.addEdge(1, 2)
+// 	g.addEdge(1, 3)
+// 	g.addEdge(1, 4)
+// 	g.addEdge(2, 4)
+// 	g.addEdge(3, 4)
+// 	g.addEdge(4, 5)
+// 	g.addEdge(0, 4)
+// 	g.addEdge(6, 7)
 
-	g.dfs(7)
-}
+// 	g.dfs(7)
+// }

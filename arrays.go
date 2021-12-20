@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func display(nums []int) {
 	for _, n := range nums {
@@ -355,4 +358,65 @@ func searchRange(nums []int, target int) []int {
 
 	emptyRet := []int{-1, -1}
 	return emptyRet
+}
+
+func numberOfWays(nums []int, target int) int {
+	count := 0
+	intMap := make(map[int][]int)
+
+	for i := 0; i < len(nums); i++ {
+		val := target - nums[i]
+		if _, ok := intMap[val]; ok {
+			count += len(intMap[val])
+		}
+
+		if intMap[nums[i]] == nil {
+			intMap[nums[i]] = []int{}
+		}
+		intMap[nums[i]] = append(intMap[nums[i]], i)
+	}
+
+	return count
+}
+
+func areTheyEqual(a []int, b []int) bool {
+	if len(a) != len(b) {
+		return false
+	}
+
+	aMap := make(map[int]bool)
+
+	for i := 0; i < len(a); i++ {
+		aMap[a[i]] = true
+	}
+
+	for i := 0; i < len(b); i++ {
+		if !aMap[b[i]] {
+			return false
+		}
+		aMap[b[i]] = false
+	}
+
+	return true
+}
+
+/*
+
+A cafeteria table consists of a row of NN seats, numbered from 11 to NN from left to right.
+Social distancing guidelines require that every diner be seated such that KK seats to their left and KK
+seats to their right (or all the remaining seats to that side if there are fewer than KK) remain empty.
+There are currently MM diners seated at the table, the iith of whom is in seat S_iS i
+​
+No two diners are sitting in the same seat, and the social distancing guidelines are satisfied.
+Determine the maximum number of additional diners who can potentially sit at
+the table without social distancing guidelines being violated for any new or existing diners,
+assuming that the existing diners cannot move and that the additional diners will
+cooperate to maximize how many of them can sit down.
+*/
+
+func getMaxAdditionalDinersCount(N int64, K int64, M int32, S []int64) int64 {
+	sort.Slice(S, func(a, b int) bool { return S[a] < S[b] })
+
+	// Write your code here
+	return 0
 }

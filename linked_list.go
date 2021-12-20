@@ -275,6 +275,29 @@ func (l *LinkedList) reverseList() {
 	l.Head = prev
 }
 
+func (l *LinkedList) reverseEvens() {
+	if l.isEmpty() {
+		return
+	}
+
+	current := l.Head
+	var prev *Node
+
+	for current != nil {
+		temp := current.Next
+		current.Next = prev
+		prev = current
+		current = temp
+	}
+
+	// 1, 2, 4, 6, 9, 8, 12
+
+	//
+
+	prev.display()
+	l.Head = prev
+}
+
 func (l *LinkedList) hasCycle() bool {
 	if l.isEmpty() {
 		return false
@@ -404,6 +427,49 @@ func (l *LinkedList) findIntersection(l2 *LinkedList) *Node {
 	}
 
 	return nil
+}
+
+func (head *Node) removeDuplicates() *Node {
+	nodeMap := make(map[int]bool)
+	p := head
+	var prev *Node
+
+	for p != nil {
+		if nodeMap[p.Element] {
+			prev.Next = p.Next
+		} else {
+			prev = p
+			nodeMap[p.Element] = true
+		}
+
+		p = p.Next
+	}
+
+	return head
+}
+
+func (head *Node) removeDuplicatesDistinct() *Node {
+	var prev *Node
+	p := head
+
+	for p != nil {
+		if p.Element == p.Next.Element {
+			for p.Next != nil && p.Element == p.Next.Element {
+				p = p.Next
+			}
+			p = p.Next
+
+			if p == nil {
+				prev.Next = nil
+			}
+		} else {
+			prev = p
+			prev.Next = p.Next
+			p = p.Next
+		}
+	}
+
+	return head
 }
 
 func swapPairs(head *Node) *Node {
