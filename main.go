@@ -1,11 +1,29 @@
 package main
 
+import "fmt"
+
 func main() {
-	linkedListExamples()
+	listExamples()
 }
 
 func stringExamples() {
 	// rotationalCipher("Zebra-493", 3)
+
+	// s := "abcdefghijklmnopqrstuvwxy211"
+	// isUnique := hasUniqueCharacters(s)
+	// fmt.Printf("Is %v Unique: %v\n", s, isUnique)
+}
+
+func listExamples() {
+	intList := List[int]{}
+	intList.Add(1)
+	intList.Add(2)
+	intList.Add(3)
+	intList.Add(4)
+	intList.Add(5)
+	fmt.Println(intList)
+	intList.Remove(1)
+	fmt.Println(intList)
 }
 
 // func LRUCacheExamples() {
@@ -146,33 +164,37 @@ func linkedListExamples() {
 	// l.addLast(12)
 	// l.reverseEvens()
 
-	l := LinkedList{}
-	l.addFirst(5)
-	l.addFirst(5)
-	l.addFirst(4)
-	l.addFirst(3)
-	l.addFirst(3)
-	l.addFirst(3)
-	l.addFirst(2)
-	l.addFirst(1)
-	l.addFirst(1)
-	l.display()
-	n := l.Head.removeDuplicatesDistinct()
-	n.display()
+	// l := LinkedList{}
+	// l.addFirst(2)
+	// l.addFirst(3)
+	// l.addFirst(1)
+	// l.addFirst(4)
+	// l.addFirst(5)
+	// l.addFirst(7)
+	// l.addFirst(2)
+	// l.addFirst(3)
+	// l.addFirst(5)
+	// l.addFirst(6)
+	// l.display()
+	// n := l.Head.returnNthNode(5)
+	// n.display()
 }
 
-// func graphExamples() {
-// 	g := new(Graph)
-// 	g.initialize()
+func graphExamples() {
+	// g := new(Graph)
+	// g.initialize(true)
 
-// 	g.addEdge(1, 2)
-// 	g.addEdge(1, 3)
-// 	g.addEdge(1, 4)
-// 	g.addEdge(2, 4)
-// 	g.addEdge(3, 4)
-// 	g.addEdge(4, 5)
-// 	g.addEdge(0, 4)
-// 	g.addEdge(6, 7)
+	// g.addEdge(0, 1)
+	// g.addEdge(0, 2)
+	// g.addEdge(1, 2)
+	// g.addEdge(2, 0)
+	// g.addEdge(2, 3)
+	// g.addEdge(3, 3)
 
-// 	g.dfs(7)
-// }
+	// g.dfs(2)
+}
+
+func interviewProblems() {
+	// n := getMaximumEatenDishCount(6, []int32{1, 2, 3, 3, 2, 1}, 6)
+	// fmt.Println(n)
+}

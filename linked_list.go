@@ -318,6 +318,25 @@ func (l *LinkedList) hasCycle() bool {
 	return false
 }
 
+func (l *LinkedList) hasCycleTwo() bool {
+	if l.isEmpty() {
+		return false
+	}
+
+	nodeMap := make(map[*Node]bool)
+	p := l.Head
+
+	for p != nil {
+		if nodeMap[p.Next] {
+			return true
+		}
+		nodeMap[p] = true
+		p = p.Next
+	}
+
+	return false
+}
+
 func (l *LinkedList) isPalindrome() bool {
 	p := l.Head
 	intArr := []int{}
@@ -453,6 +472,15 @@ func (head *Node) removeDuplicatesDistinct() *Node {
 	p := head
 
 	for p != nil {
+		if p.Next == nil {
+			if prev != nil {
+				prev.Next = p
+			} else {
+				head = p
+			}
+			return head
+		}
+
 		if p.Element == p.Next.Element {
 			for p.Next != nil && p.Element == p.Next.Element {
 				p = p.Next
@@ -460,13 +488,64 @@ func (head *Node) removeDuplicatesDistinct() *Node {
 			p = p.Next
 
 			if p == nil {
-				prev.Next = nil
+				if prev != nil {
+					prev.Next = nil
+				} else {
+					head = nil
+				}
 			}
 		} else {
-			prev = p
-			prev.Next = p.Next
+			if prev == nil {
+				head = p
+				prev = head
+			} else {
+				prev.Next = p
+				prev = p
+			}
+
 			p = p.Next
 		}
+	}
+
+	return head
+}
+
+func (head *Node) deleteDuplicatesUnsorted() *Node {
+	dupMap := make(map[int]bool)
+	p := head
+
+	for p != nil {
+		_, ok := dupMap[p.Element]
+		if ok {
+			dupMap[p.Element] = true
+		} else {
+			dupMap[p.Element] = false
+		}
+		p = p.Next
+	}
+
+	p = head
+	var prev *Node
+
+	for p != nil {
+		if !dupMap[p.Element] {
+			if prev == nil {
+				head = p
+				prev = head
+			} else {
+				prev.Next = p
+				prev = p
+			}
+		} else if p.Next == nil {
+			if prev != nil {
+				prev.Next = nil
+			}
+		}
+		p = p.Next
+	}
+
+	if prev == nil {
+		return nil
 	}
 
 	return head
@@ -484,4 +563,22 @@ func swapPairs(head *Node) *Node {
 	secondNode.Next = firstNode
 
 	return secondNode
+}
+
+func (head *Node) returnNthNode(n int) *Node {
+	nodeMap := make(map[int]*Node)
+	i := 0
+	p := head
+
+	for p != nil {
+		nodeMap[i] = p
+		p = p.Next
+		i++
+	}
+
+	if len(nodeMap) < n {
+		return nil
+	}
+
+	return nodeMap[len(nodeMap)-n]
 }

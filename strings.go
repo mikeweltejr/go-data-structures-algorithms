@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func rotationalCipher(input string, rotationalCipher int) string {
 	retStr := ""
@@ -54,4 +57,19 @@ func isUpperAlpha(n int) bool {
 
 func isLowerAlpha(n int) bool {
 	return (n >= 97 && n <= 122)
+}
+
+func hasUniqueCharacters(s string) bool {
+	charMap := make(map[rune]bool)
+	s = strings.ToLower(s)
+
+	for _, c := range s {
+		if !charMap[rune(c)] {
+			charMap[rune(c)] = true
+		} else {
+			return false
+		}
+	}
+
+	return true
 }

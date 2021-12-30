@@ -4,12 +4,13 @@ import "fmt"
 
 type Graph struct {
 	adjMatrix map[int][]int
-	visited   map[int]int
+	visited   map[int]bool
 	directed  bool
 }
 
-func (g *Graph) initialize() {
-	g.visited = make(map[int]int)
+func (g *Graph) initialize(d bool) {
+	g.visited = make(map[int]bool)
+	g.directed = d
 }
 
 func (g *Graph) addEdge(a int, b int) {
@@ -31,15 +32,24 @@ func (g *Graph) addEdge(a int, b int) {
 	}
 }
 
-func (g *Graph) dfs(n int) {
-	if g.visited[n] == 0 {
-		fmt.Printf("%d->", n)
-		g.visited[n] = 1
+func (g *Graph) bfs(n int) {
 
-		for _, j := range g.adjMatrix[n] {
-			if g.visited[j] == 0 {
-				g.dfs(j)
-			}
+}
+
+func (g *Graph) dfs(n int) {
+	dfsUtil(g, n)
+	fmt.Println()
+}
+
+func dfsUtil(g *Graph, v int) {
+	g.visited[v] = true
+	fmt.Printf("%d ", v)
+
+	adjList := g.adjMatrix[v]
+
+	for i := 0; i < len(adjList); i++ {
+		if !g.visited[adjList[i]] {
+			dfsUtil(g, adjList[i])
 		}
 	}
 }
