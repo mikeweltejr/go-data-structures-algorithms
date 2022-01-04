@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	b := new(BST)
@@ -19,4 +21,7 @@ func main() {
 	fmt.Println()
 	postOrderRecursive(b.Root)
 	fmt.Println()
+
+	n := 16
+	fmt.Printf("Found %d: %v\n", n, search(b.Root, n))
 }

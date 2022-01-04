@@ -1,59 +1,7 @@
 package main
 
-import "fmt"
-
 func main() {
-	listExamples()
 }
-
-func stringExamples() {
-	// rotationalCipher("Zebra-493", 3)
-
-	// s := "abcdefghijklmnopqrstuvwxy211"
-	// isUnique := hasUniqueCharacters(s)
-	// fmt.Printf("Is %v Unique: %v\n", s, isUnique)
-}
-
-func listExamples() {
-	intList := List[int]{}
-	intList.Add(1)
-	intList.Add(2)
-	intList.Add(3)
-	intList.Add(4)
-	intList.Add(5)
-	fmt.Println(intList)
-	intList.Remove(1)
-	fmt.Println(intList)
-}
-
-// func LRUCacheExamples() {
-// 	cache := newLRUCache(7)
-// 	cache.Put(1)
-// 	cache.Put(2)
-// 	cache.Put(3)
-// 	cache.Put(4)
-// 	cache.Put(5)
-// 	cache.Put(6)
-// 	cache.PrintCache()
-
-// 	cache.Get(4)
-// 	cache.PrintCache()
-
-// 	cache.Get(3)
-// 	cache.PrintCache()
-
-// 	cache.Put(7)
-// 	cache.PrintCache()
-
-// 	cache.Put(8)
-// 	cache.PrintCache()
-
-// 	cache.Get(9)
-// 	cache.PrintCache()
-
-// 	cache.Get(7)
-// 	cache.PrintCache()
-// }
 
 // func queueExamples() {
 // 	var q Queue

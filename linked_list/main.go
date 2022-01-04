@@ -65,3 +65,32 @@ func main() {
 	n = l.Head.returnNthNode(5)
 	n.display()
 }
+
+// func LRUCacheExamples() {
+// 	cache := newLRUCache(7)
+// 	cache.Put(1)
+// 	cache.Put(2)
+// 	cache.Put(3)
+// 	cache.Put(4)
+// 	cache.Put(5)
+// 	cache.Put(6)
+// 	cache.PrintCache()
+
+// 	cache.Get(4)
+// 	cache.PrintCache()
+
+// 	cache.Get(3)
+// 	cache.PrintCache()
+
+// 	cache.Put(7)
+// 	cache.PrintCache()
+
+// 	cache.Put(8)
+// 	cache.PrintCache()
+
+// 	cache.Get(9)
+// 	cache.PrintCache()
+
+// 	cache.Get(7)
+// 	cache.PrintCache()
+// }

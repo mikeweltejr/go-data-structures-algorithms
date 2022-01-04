@@ -55,3 +55,19 @@ func postOrderRecursive(tempRoot *BSTNode) {
 		fmt.Printf("%d->", tempRoot.Val)
 	}
 }
+
+func search(tempRoot *BSTNode, n int) bool {
+	if tempRoot == nil {
+		return false
+	}
+
+	if tempRoot.Val == n {
+		return true
+	} else if n < tempRoot.Val {
+		return search(tempRoot.Left, n)
+	} else if n > tempRoot.Val {
+		return search(tempRoot.Right, n)
+	}
+
+	return false
+}
