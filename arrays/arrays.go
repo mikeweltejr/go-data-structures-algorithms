@@ -398,3 +398,20 @@ func areTheyEqual(a []int, b []int) bool {
 
 	return true
 }
+
+func rotateMatrix90Degrees(n [][]int) [][]int {
+	retMatrix := make([][]int, len(n))
+
+	r := 0
+	for column := len(n[0]) - 1; column >= 0; column-- {
+		for row := 0; row < len(n); row++ {
+			if retMatrix[r] == nil {
+				retMatrix[r] = []int{}
+			}
+			retMatrix[r] = append(retMatrix[r], n[row][column])
+		}
+		r++
+	}
+
+	return retMatrix
+}
