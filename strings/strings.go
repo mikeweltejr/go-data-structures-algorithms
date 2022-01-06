@@ -163,3 +163,57 @@ func oneAway(a string, b string) bool {
 
 	return charDiff <= 1
 }
+
+func oneAwayPalindrome(s string) bool {
+	usedOneAway := false
+
+	for i, j := 0, len(s)-1; i < j; {
+		if s[i] != s[j] {
+			if usedOneAway {
+				return false
+			}
+
+			// If i and j are next to each other or the same return true
+			if math.Abs(float64(i)-float64(j)) <= 1 {
+				return true
+			}
+
+			usedOneAway = true
+
+			if s[i] == s[j-1] {
+				j--
+			} else if s[i+1] == s[j] {
+				i++
+			} else {
+				return false
+			}
+		} else {
+			i++
+			j--
+		}
+	}
+
+	return true
+}
+
+func compressString(s string) string {
+	var cString strings.Builder
+
+	for i := 0; i < len(s); {
+		count := 1
+		char := rune(s[i])
+
+		for i+1 < len(s) && s[i] == s[i+1] {
+			count++
+			i++
+		}
+		i++
+		cString.WriteString(string(char) + fmt.Sprint(count))
+	}
+
+	if len(s) < len(cString.String()) {
+		return s
+	}
+
+	return cString.String()
+}

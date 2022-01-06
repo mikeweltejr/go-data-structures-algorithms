@@ -19,5 +19,13 @@ func main() {
 	a := "pale"
 	b := "bake"
 	r := oneAway(a, b)
-	fmt.Printf("One Awway %v, %v: %v\n", a, b, r)
+	fmt.Printf("One Away %v, %v: %v\n", a, b, r)
+
+	s = "aabcbaae"
+	retBool = oneAwayPalindrome(s)
+	fmt.Printf("One Away Palindrome %v: %v\n", s, retBool)
+
+	s = "aaaaabcd"
+	cString := compressString(s)
+	fmt.Printf("Compressed String %v: %v\n", s, cString)
 }
