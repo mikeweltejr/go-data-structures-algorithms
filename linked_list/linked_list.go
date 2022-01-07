@@ -582,3 +582,19 @@ func (head *Node) returnNthNode(n int) *Node {
 
 	return nodeMap[len(nodeMap)-n]
 }
+
+func (head *Node) partition(n int) *Node {
+	l := LinkedList{}
+	p := head
+
+	for p != nil {
+		if p.Element < n {
+			l.addFirst(p.Element)
+		} else {
+			l.addLast(p.Element)
+		}
+		p = p.Next
+	}
+
+	return l.Head
+}
