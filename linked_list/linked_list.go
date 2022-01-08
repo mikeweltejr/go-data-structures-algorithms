@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 )
 
 type Node struct {
@@ -584,17 +585,131 @@ func (head *Node) returnNthNode(n int) *Node {
 }
 
 func (head *Node) partition(n int) *Node {
-	l := LinkedList{}
 	p := head
+	var leftHead *Node
+	var rightHead *Node
+	var lastLeft *Node
 
 	for p != nil {
+		newNode := Node{
+			Element: p.Element,
+			Next:    nil,
+		}
 		if p.Element < n {
-			l.addFirst(p.Element)
+			if leftHead == nil {
+				leftHead = &newNode
+				lastLeft = leftHead
+			} else {
+				newNode.Next = leftHead
+				leftHead = &newNode
+			}
 		} else {
-			l.addLast(p.Element)
+			if rightHead == nil {
+				rightHead = &newNode
+			} else {
+				newNode.Next = rightHead
+				rightHead = &newNode
+			}
 		}
 		p = p.Next
 	}
 
-	return l.Head
+	if leftHead == nil {
+		leftHead = rightHead
+	} else {
+		lastLeft.Next = rightHead
+	}
+
+	return leftHead
+}
+
+func sumReversed(a *Node, b *Node) *Node {
+	aSum := 0
+	ind := 1
+
+	p := a
+	for p != nil {
+		aSum += (p.Element * ind)
+		ind *= 10
+		p = p.Next
+	}
+
+	p = b
+	bSum := 0
+	ind = 1
+	for p != nil {
+		bSum += (p.Element * ind)
+		ind *= 10
+		p = p.Next
+	}
+
+	retSum := aSum + bSum
+	s := strconv.Itoa(retSum)
+	var retNode *Node
+
+	for i := 0; i < len(s); i++ {
+		n, _ := strconv.Atoi(string(s[i]))
+		newNode := Node{
+			Element: n,
+			Next:    nil,
+		}
+		if retNode == nil {
+			retNode = &newNode
+		} else {
+			newNode.Next = retNode
+			retNode = &newNode
+		}
+	}
+
+	return retNode
+}
+
+func sumForward(a *Node, b *Node) *Node {
+	p := a
+	aArr := []int{}
+	for p != nil {
+		aArr = append(aArr, p.Element)
+		p = p.Next
+	}
+
+	bArr := []int{}
+	p = b
+	for p != nil {
+		bArr = append(bArr, p.Element)
+		p = p.Next
+	}
+
+	aSum := 0
+	ind := 1
+	for i := len(aArr) - 1; i >= 0; i-- {
+		aSum += (aArr[i] * ind)
+		ind *= 10
+	}
+
+	bSum := 0
+	ind = 1
+	for i := len(bArr) - 1; i >= 0; i-- {
+		bSum += (bArr[i] * ind)
+		ind *= 10
+	}
+
+	retSum := aSum + bSum
+	var retNode *Node
+	s := strconv.Itoa(retSum)
+
+	for i := len(s) - 1; i >= 0; i-- {
+		n, _ := strconv.Atoi(string(s[i]))
+		newNode := Node{
+			Element: n,
+			Next:    nil,
+		}
+		if retNode == nil {
+			retNode = &newNode
+		} else {
+			newNode.Next = retNode
+			retNode = &newNode
+		}
+	}
+
+	return retNode
 }

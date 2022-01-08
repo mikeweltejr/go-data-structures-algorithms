@@ -63,15 +63,30 @@ func main() {
 	// n = l.Head.returnNthNode(5)
 	// n.display()
 
-	l := LinkedList{}
-	l.addFirst(1)
-	l.addFirst(10)
-	l.addFirst(8)
-	l.addFirst(3)
-	l.addFirst(2)
-	l.addFirst(5)
-	l.addFirst(5)
-	n := l.Head.partition(5)
+	// l := LinkedList{}
+	// l.addFirst(1)
+	// l.addFirst(10)
+	// l.addFirst(8)
+	// l.addFirst(3)
+	// l.addFirst(2)
+	// l.addFirst(5)
+	// l.addFirst(5)
+	// n := l.Head.partition(5)
+	// n.display()
+
+	a := LinkedList{}
+	a.addFirst(6)
+	a.addFirst(1)
+	a.addFirst(7)
+
+	b := LinkedList{}
+	b.addFirst(2)
+	b.addFirst(9)
+	b.addFirst(5)
+
+	n := sumReversed(a.Head, b.Head)
+	n.display()
+	n = sumForward(a.Head, b.Head)
 	n.display()
 }
 
