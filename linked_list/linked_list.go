@@ -713,3 +713,25 @@ func sumForward(a *Node, b *Node) *Node {
 
 	return retNode
 }
+
+func intersecting(a, b *LinkedList) bool {
+	aNode := a.Head
+	bNode := b.Head
+
+	aMap := make(map[*Node]bool)
+
+	for aNode != nil {
+		aMap[aNode] = true
+		aNode = aNode.Next
+	}
+
+	for bNode != nil {
+		if aMap[bNode] {
+			fmt.Println(bNode.Element)
+			return true
+		}
+		bNode = bNode.Next
+	}
+
+	return false
+}

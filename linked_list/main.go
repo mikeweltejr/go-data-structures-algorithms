@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	// l := LinkedList{}
 
@@ -84,10 +86,13 @@ func main() {
 	b.addFirst(9)
 	b.addFirst(5)
 
-	n := sumReversed(a.Head, b.Head)
-	n.display()
-	n = sumForward(a.Head, b.Head)
-	n.display()
+	// n := sumReversed(a.Head, b.Head)
+	// n.display()
+	// n = sumForward(a.Head, b.Head)
+	// n.display()
+
+	b.Head.Next.Next = a.Head.Next
+	fmt.Printf("Are a and b interseting: %v\n", intersecting(&a, &b))
 }
 
 // func LRUCacheExamples() {
